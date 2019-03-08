@@ -1,0 +1,66 @@
+<div class="content-wrap">
+  <div class="main" style="padding: 0px 0px 0px 16%;">
+    <div class="container-fluid">
+      <!-- /# row -->
+      <section id="main-content">
+        <div class="row">
+          <div class="col-lg-6 p-r-0 title-margin-right">
+            <div class="page-header">
+              <div class="page-title">
+                <h1>Create a task</h1>
+                <span>All <b class="text-danger">*</b> fields are mandatory</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 text-right"><br /><br />
+            <button class="btn btn-success" type="button" (click)="saveTask()"><i class="fa fa-floppy-o"
+                aria-hidden="true"></i> Save</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="basic-form">
+                  <form>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <h6>Employee<span class="text-danger"> *</span></h6>
+                          <select class="form-control" [(ngModel)]="task.assign_to" name="empl">
+                            <option vlaue="" selected>Select</option>
+                            <ng-container *ngFor="let emp of employeeList, let i = index">
+                              <option value={{emp.id}} *ngIf="emp.delete == false && emp.id != currentLogedInEmp">
+                                {{emp.first_name}} {{emp.last_name}}</option>
+                            </ng-container>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <h6>Date of task<span class="text-danger"> *</span></h6>
+                          <input type="text" class="form-control input-default" name="selected_date" id="taskDate" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="form-group">
+                          <h6>Task<span class="text-danger"> *</span></h6>
+                          <ckeditor [(ngModel)]="ckeditorContent" [ngModelOptions]="{standalone: true}">
+                            <ckbutton [name]="'saveButton'" [command]="'saveCmd'" (click)="save($event)"
+                              [icon]="'save.png'" [label]="'Save Document'" [toolbar]="'clipboard,1'">
+                            </ckbutton>
+                          </ckeditor>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>

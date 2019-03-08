@@ -1,0 +1,68 @@
+<div class="content-wrap">
+    <div class="main" style="padding: 0px 0px 0px 16%;">
+      <div class="container-fluid">
+        <section id="main-content">
+          <div class="card">
+            <div class="card-body">
+              <div class="row text-center">
+                <div class="col-lg-3">
+                  <input type="text" class="form-control input-default " placeholder="First Name" [(ngModel)]="emp.first_name">
+                </div>
+                <div class="col-lg-3">
+                  <input type="text" class="form-control input-default " placeholder="Last Name" [(ngModel)]="emp.last_name">
+                </div>
+                <div class="col-lg-2">
+                  <input type="text" class="form-control input-default " placeholder="Email" [(ngModel)]="emp.email">
+                </div>
+                <div class="col-lg-2">
+                  <button class="btn btn-success" type="button" (click)="search()"><i class="fa fa-search-o" aria-hidden="true"></i>
+                    Search</button>
+                </div>
+                <div class="col-lg-2">
+                    <button class="btn btn-info" type="button" (click)="clear()"><i class="fa fa-search-o" aria-hidden="true"></i>
+                      Clear</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table student-data-table m-t-20">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Email</th>
+                          <th>Gender</th>
+                          <th>Is Admin</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr (click)="viewEmp(e)" *ngFor="let e of employeeList, let i = index">
+                          <td>{{i + 1}}</td>
+                          <td>{{e.first_name}}</td>
+                          <td>{{e.last_name}}</td>
+                          <td>{{e.email}}</td>
+                          <td>
+                            <span class="badge badge-success" *ngIf="e.gender=='Male'"><i class="fa fa-male" aria-hidden="true"></i></span>
+                            <span class="badge badge-danger"  *ngIf="e.gender=='Female'"><i class="fa fa-female" aria-hidden="true"></i></span>
+                          </td>
+                          <td>
+                            <span class="badge" [ngClass]="{'badge-info' : e.role == 0, 'badge-warning' : e.role == 1}">{{e.role == 0 ? 'Not Admin' : 'Admin'}}</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>

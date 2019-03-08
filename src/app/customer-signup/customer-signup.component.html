@@ -1,0 +1,66 @@
+<div class="bg-primary screen-height">
+  <div class="unix-login">
+    <div class="container-fluid bg-color-screen">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <img src="assets/logo.png" class="img-size-front-screen" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 text-center">
+              <span>Home Loans That Work As Hard As You Do,We make the home financing process as smooth as
+                possible.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="login-content">
+            <div class="login-form login-form-bg">
+              <form>
+                <div class="form-group">
+                  <label class="text-white"><b>First Name <span class="text-danger"> *</span></b></label>
+                  <input type="email" class="form-control" placeholder="First Name" name="first_name"
+                    onKeyPress="if(this.value.length==20) return false;" [(ngModel)]="customer.first_name">
+                </div>
+                <div class="form-group">
+                  <label class="text-white"><b>Last Name<span class="text-danger"> *</span></b></label>
+                  <input type="email" class="form-control" placeholder="Last Name" name="last_name"
+                    onKeyPress="if(this.value.length==20) return false;" [(ngModel)]="customer.last_name">
+                </div>
+                <div class="form-group">
+                  <label class="text-white"><b>Email <span class="text-danger"> *</span></b></label>
+                  <input type="email" class="form-control" placeholder="Email" name="email"
+                    onKeyPress="if(this.value.length==60) return false;" [(ngModel)]="customer.email"
+                    (keyup)="checkEmail($event)">
+                  <span class="badge badge-danger" *ngIf="isInvalidEmail">Not a valid email</span>
+                  <span class="badge badge-danger" *ngIf="isEmailNotExist">Email not available</span>
+                  <span class="badge badge-success" *ngIf="isEmailExist">Email available</span>
+                </div>
+                <!-- <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="Password">
+                  </div> -->
+                <div class="form-group">
+                  <label class="text-white"><b>Gender <span class="text-danger"> *</span></b></label>
+                  <select class="form-control" [(ngModel)]="customer.gender" name="gender">
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30"
+                  (click)="register()">Register</button>
+                <div class="register-link m-t-15 text-center">
+                  <p>Already have account ? <a routerLink="/login"> Sign in</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

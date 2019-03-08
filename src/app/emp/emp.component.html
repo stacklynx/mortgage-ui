@@ -1,0 +1,43 @@
+<div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+    <div class="nano">
+        <div class="nano-content">
+            <ul>
+                <div class="logo" (click)="navDashborad()"><a routerLink="/customer/dashboard">
+                    <img src="assets/logo.png" class="logo-size" alt="" /></a></div><hr/>
+                <li (click)="navDashborad()" id="dasbordTask" [ngClass]="{'active' : dasboardActiveClass==1}"><a routerLink="/emp/dashboard"><i class="ti-home"></i> Dashboard</a></li>
+                <li (click)="navEmp()" [ngClass]="{'active' : empListActiveClass==1}" *ngIf="empData.role==1"><a routerLink="/emp/emp-list"><i class="fa fa-users" aria-hidden="true"></i> Employee</a></li>
+                <li (click)="navCust()" [ngClass]="{'active' : custActiveClass==1}" *ngIf="empData.role==1"><a routerLink="/emp/customers"><i class="fa fa-user-secret" aria-hidden="true"></i> Customer</a></li>
+                <!-- <li (click)="navTask()" id="task" [ngClass]="{'active' : taskActiveClass==1}"><a><i class="fa fa-tasks" aria-hidden="true"></i> Task</a></li> -->
+                <li (click)="navTaskList()" id="taskList" [ngClass]="{'active' : taskListActiveClass==1}"><a routerLink="/emp/task-list"><i class="fa fa-list" aria-hidden="true"></i> Task List</a></li>
+                <li (click)="navProfile()"  [ngClass]="{'active' : profileActiveClass==1}"><a routerLink="/emp/profile"><i class="ti-user"></i> Profile</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /# sidebar -->
+
+<div class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="float-left">
+                    <!-- <div class="hamburger sidebar-toggle">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </div> -->
+                </div>
+                <div class="float-right">
+                    <div class="dropdown dib">
+                        <div class="header-icon" data-toggle="dropdown">
+                            <i class="ti-power-off" (click)="logOut()"><span class="text-left"> Logout</span></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<router-outlet></router-outlet>

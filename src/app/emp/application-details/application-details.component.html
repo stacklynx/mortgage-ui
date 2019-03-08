@@ -1,0 +1,215 @@
+<div class="content-wrap">
+  <div class="main" style="padding: 0px 0px 0px 16%;">
+    <div class="container-fluid">
+      <!-- /# row -->
+      <section id="main-content">
+        <div class="row">
+          <div class="col-lg-6 p-r-0 title-margin-right">
+            <div class="page-header">
+              <div class="page-title">
+                <h1>Application Details</h1>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 text-right" *ngIf="empData.role == 0"><br />
+            <button class="btn btn-warning" type="button" (click)="open(content)">Change Status</button>
+          </div>
+          <div class="col-lg-3 text-right" *ngIf="empData.role == 1"><br />
+            <button class="btn btn-warning" type="button" (click)="open(content)">Assign To Employee</button>
+          </div>
+          <div class="col-lg-3 text-right" *ngIf="empData.role==1"><br />
+            <button class="btn btn-info" type="button" (click)="viewCustomer()">View Customer</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-title">
+                <h4 class="text-primary">Application Status</h4>
+              </div>
+              <div class="card-body">
+                <div class="basic-form">
+                  <div class="phone-content">
+                    <span class="contact-title">Status:</span>
+                    <span class="phone-number text-right">
+                      <span class="badge"
+                        [ngClass]="{'badge-warning' : app.status==1, 'badge-primary' : app.status==2, 'badge-success' : app.status==3, 'badge-danger' : app.status==4}">
+                        {{app.status==1 ? 'Open' : app.status==2 ? 'In Progress' : app.status==3 ? 'Accepted' : 'Rejected'}}
+                      </span>
+                    </span>
+                  </div>
+                  <div class="phone-content">
+                      <span class="contact-title">Assign To:</span>
+                      <span class="phone-number">{{app.assigned ? app.assigned_name : 'N/A'}}</span>
+                    </div>
+                </div>
+              </div>
+              <div class="card-title">
+                <h4 class="text-primary">Personal Information</h4>
+              </div>
+              <div class="card-body">
+                <div class="basic-form">
+                  <div class="phone-content">
+                    <span class="contact-title">Name:</span>
+                    <span class="phone-number">{{app.first_name}} {{app.last_name}}</span>
+                  </div>
+                  <div class="email-content">
+                    <span class="contact-title">Email:</span>
+                    <span class="contact-email">{{app.email}}</span>
+                  </div>
+                  <div class="address-content">
+                    <span class="contact-title">Address:</span>
+                    <span class="mail-address">{{app.address}}</span>
+                  </div>
+                  <div class="address-content">
+                    <span class="contact-title">Phone Number:</span>
+                    <span class="phone-number">{{app.phone}}</span>
+                  </div>
+                  <div class="address-content">
+                    <span class="contact-title">Date of birth:</span>
+                    <span class="mail-address">{{app.dob}}</span>
+                  </div>
+                  <div class="address-content">
+                    <span class="contact-title">Driving License:</span>
+                    <span class="mail-address">{{app.driving_license}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-title">
+                <h4 class="text-primary">Income Source</h4>
+              </div>
+              <div class="card-body">
+                <div class="basic-form">
+                  <div class="phone-content">
+                    <span class="contact-title">Employer Name:</span>
+                    <span class="phone-number">{{app.employer_name}}</span>
+                  </div>
+                  <div class="address-content">
+                    <span class="contact-title">Employer Address:</span>
+                    <span class="mail-address">{{app.employer_address}}</span>
+                  </div>
+                  <div class="address-content">
+                    <span class="contact-title">Job Title:</span>
+                    <span class="mail-address">{{app.job_title}}</span>
+                  </div>
+                  <div class="address-content">
+                    <span class="contact-title">Annual Salary:</span>
+                    <span class="mail-address">{{app.annual_salary}} USD</span>
+                  </div>
+                  <div class="address-content">
+                    <span class="contact-title">Monthly Salary:</span>
+                    <span class="mail-address">{{app.monthly_inhand_salary}} USD</span>
+                  </div>
+                </div>
+                <div class="card-title">
+                  <h4 class="text-primary">Bank Information</h4>
+                </div>
+                <div class="card-body">
+                  <div class="basic-form">
+                    <div class="phone-content">
+                      <span class="contact-title">Bank Name:</span>
+                      <span class="phone-number">{{app.bank_name}}</span>
+                    </div>
+                    <div class="address-content">
+                      <span class="contact-title">Account Number:</span>
+                      <span class="mail-address">{{app.account_number}}</span>
+                    </div>
+                    <div class="address-content">
+                      <span class="contact-title">Account Type:</span>
+                      <span class="mail-address">{{app.accout_type}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-8">
+            <div class="card">
+              <div class="card-title">
+                <h4 class="text-primary">Comment</h4>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <textarea class="form-control input-default textarea-sty" name="comment"
+                    onKeyPress="if(this.value.length==180) return false;" [(ngModel)]="com.comment"></textarea>
+                </div>
+                <div class="text-right">
+                  <button class="btn btn-sm btn-success" type="button" (click)="saveCommet()">Post</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="form-group" *ngFor="let c of commentList, let i = index">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <h6 class="text-warning">{{c.employee_name}}</h6>
+                    </div>
+                    <div class="col-lg-6 text-right">
+                      <h6 class="text-info"> {{c.created_on | date : 'dd-MMM-yyyy @ h:mma'}}</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <p>
+                        {{c.comment}}
+                      </p>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Assign Modal -->
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <div class="row">
+        <div class="col-lg-6">
+          <h5 class="modal-title" id="modal-basic-title" *ngIf="empData.role == 1">Employee</h5>
+          <h5  *ngIf="empData.role == 0">Status</h5>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group" *ngIf="empData.role == 1">
+          <select class="form-control" name="emp" [(ngModel)]="selectedEmp">
+            <option value="" selected>Select</option>
+            <ng-container *ngFor="let emp of employeeList, let i = index">
+                <option value={{emp.id}} *ngIf="emp.id != empData.id">
+                  {{emp.first_name}} {{emp.last_name}}</option>
+              </ng-container>
+          </select>
+        </div>
+        <div class="form-group" *ngIf="empData.role == 0">
+            <select class="form-control" name="emp" [(ngModel)]="selectedStatus">
+              <option value="" selected>Select</option>
+              <ng-container *ngFor="let status of statusList, let i = index">
+                  <option value={{status.id}}>
+                    {{status.name}}</option>
+                </ng-container>
+            </select>
+          </div>
+      </form>
+    </div>
+    <div class="modal-footer" *ngIf="empData.role == 1">
+      <button type="button" class="btn btn-sm btn-success" (click)="saveData()">Save</button>
+      <button type="button" class="btn btn-sm btn-default" (click)="modal.dismiss('Cross click')">Close</button>
+    </div>
+    <div class="modal-footer" *ngIf="empData.role == 0">
+        <button type="button" class="btn btn-sm btn-success" (click)="saveStatus()">Save</button>
+        <button type="button" class="btn btn-sm btn-default" (click)="modal.dismiss('Cross click')">Close</button>
+      </div>
+  </ng-template>

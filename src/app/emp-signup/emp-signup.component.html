@@ -1,0 +1,98 @@
+<div class="bg-primary screen-height">
+  <div class="unix-login bg-color-screen">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <img src="assets/logo.png" class="img-size-front-screen" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 text-center">
+              <span>Home Loans That Work As Hard As You Do,We make the home financing process as smooth as
+                possible.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="login-content">
+            <div class="login-form login-form-bg">
+              <h5 class="text-center"><span class="text-danger">E</span>mployee <span class="text-warning">P</span>anel
+              </h5>
+              <form>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="text-white"><b>First Name <span class="text-danger"> *</span></b></label>
+                      <input type="email" class="form-control" placeholder="First Name" name="first_name"
+                        onKeyPress="if(this.value.length==20) return false;" [(ngModel)]="emp.first_name">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="text-white"><b>Last Name<span class="text-danger"> *</span></b></label>
+                      <input type="email" class="form-control" placeholder="Last Name" name="last_name"
+                        onKeyPress="if(this.value.length==20) return false;" [(ngModel)]="emp.last_name">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="text-white"><b>Email <span class="text-danger"> *</span></b></label>
+                      <input type="email" class="form-control" placeholder="Email" name="email"
+                        onKeyPress="if(this.value.length==60) return false;" [(ngModel)]="emp.email"
+                        (keyup)="checkEmail($event)">
+                      <span class="badge badge-danger" *ngIf="isInvalidEmail">Not a valid email</span>
+                      <span class="badge badge-danger" *ngIf="isEmailNotExist">Email not available</span>
+                      <span class="badge badge-success" *ngIf="isEmailExist">Email available</span>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="text-white"><b>Password<span class="text-danger"> *</span></b></label>
+                      <input type="password" class="form-control" placeholder="Password" name="pwd"
+                        onKeyPress="if(this.value.length==20) return false;" [(ngModel)]="emp.password">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="text-white"><b>Confirm Password<span class="text-danger"> *</span></b></label>
+                      <input type="password" class="form-control" placeholder="Password" name="cnfPwd"
+                        onKeyPress="if(this.value.length==20) return false;" [(ngModel)]="confPwd">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="text-white"><b>Gender <span class="text-danger"> *</span></b></label>
+                      <select class="form-control" [(ngModel)]="emp.gender" name="gender">
+                        <option value="">Select</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30"
+                  (click)="register()">Register</button>
+                <!-- <div class="social-login-content">
+                  <div class="social-button">
+                    <button type="button" class="btn btn-success bg-google btn-flat btn-addon m-b-10"><i
+                        class="ti-google"></i>Register with google</button>
+                  </div>
+                </div> -->
+                <div class="register-link m-t-15 text-center">
+                  <p>Already have account ? <a routerLink="/emp-login"> Sign in</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

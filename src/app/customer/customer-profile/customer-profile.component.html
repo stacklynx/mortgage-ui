@@ -1,0 +1,104 @@
+<div class="content-wrap">
+  <div class="main" style="padding: 0px 0px 0px 16%;">
+    <div class="container-fluid">
+      <!-- /# row -->
+      <section id="main-content">
+        <div class="row">
+          <div class="col-lg-6 p-r-0 title-margin-right">
+            <div class="page-header">
+              <div class="page-title">
+                <h1>Profile</h1> 
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 text-right"><br />
+            <button *ngIf="isDisabled" class="btn btn-warning" type="button" (click)="edit()"><i
+                class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+            <div class="row" *ngIf="!isDisabled">
+              <div class="col-lg-9 text-right">
+                <button class="btn btn-danger" type="button" (click)="update()"> Update</button>
+              </div>
+              <div class="col-lg-3 text-right">
+                <button class="btn btn-success" type="button" (click)="cancel()"> Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <div class="basic-form">
+                  <form>
+                    <div class="form-group">
+                      <h6>First Name<span class="text-danger"> *</span></h6>
+                      <input type="text" class="form-control input-default " placeholder="First Name" [(ngModel)]="customer.first_name"
+                        onKeyPress="if(this.value.length==20) return false;" name="first_name" [disabled]="isDisabled">
+                    </div>
+                    <div class="form-group">
+                      <h6>Last Name<span class="text-danger"> *</span></h6>
+                      <input type="text" class="form-control input-default " placeholder="Last Name" [(ngModel)]="customer.last_name"
+                        onKeyPress="if(this.value.length==20) return false;" name="last_name" [disabled]="isDisabled">
+                    </div>
+                    <div class="form-group">
+                      <h6>Email<span class="text-danger"> *</span></h6>
+                      <input type="email" class="form-control input-default " placeholder="Email" [(ngModel)]="customer.email"
+                        onKeyPress="if(this.value.length==60) return false;" name="email" [disabled]="true">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <div class="basic-form">
+                  <form>
+                    <div class="form-group">
+                      <h6>Gender<span class="text-danger"> *</span></h6>
+                      <select class="form-control" [disabled]="isDisabled" name="gender" [(ngModel)]="customer.gender">
+                        <option value="">Select</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <div class="basic-form">
+                  <div class="form-group" *ngIf="isPass">
+                    <h6>Old Password<span class="text-danger"> *</span></h6>
+                    <input type="password" class="form-control input-default " name="old_pass" placeholder="Enter Password" [(ngModel)]="old_password">
+                  </div>
+                  <div class="form-group" *ngIf="isPass">
+                    <h6>New Password<span class="text-danger"> *</span></h6>
+                    <input type="password" class="form-control input-default " name="new_pass" placeholder="Enter Password" [(ngModel)]="new_password"/>
+                  </div>
+                  <div class="form-group" *ngIf="isPass">
+                    <h6>Confirm New Password<span class="text-danger"> *</span></h6>
+                    <input type="password" class="form-control input-default " name="conf_pass" placeholder="Enter Password" [(ngModel)]="conf_password">
+                  </div>
+                  <div class="col-lg-12 text-right">
+                    <button *ngIf="!isPass" class="btn btn-warning" type="button" (click)="passwordEdit()"><i
+                        class="fa fa-pencil-square-o" aria-hidden="true"></i> Change Password</button>
+                    <div class="row" *ngIf="isPass">
+                      <div class="col-lg-9 text-right">
+                        <button class="btn btn-danger" type="button" (click)="updatePwd()"> Update</button>
+                      </div>
+                      <div class="col-lg-3 text-right">
+                        <button class="btn btn-success" type="button" (click)="cancelPwd()"> Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
