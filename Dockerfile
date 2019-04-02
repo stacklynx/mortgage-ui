@@ -13,11 +13,11 @@ WORKDIR /opt/apps/mortgage-ui
 RUN npm i event-stream && npm install --silent
 #RUN  npm run build && mv ./dist/mortgage-ui/* ./dist && rm -rf ./dist/mortgage-ui
 ENV PROJECT_HOME=/opt/apps/mortgage-ui
+#RUN curl -o /opt/apps/bootstrap-app.sh https://raw.githubusercontent.com/stacklynx/mortgage-ui/master/bootstrap-app.sh &&  chmod +x $SETUP_SCRIPT 
 
-ADD ./bootstrap-app.sh /opt/apps/bootstrap-app.sh
-##RUN chmod +x /opt/apps/bootstrap-app.sh
+
 # start app
-ENTRYPOINT  ["/opt/apps/bootstrap-app.sh"]
+ENTRYPOINT  ["/opt/apps/mortgage-ui/bootstrap-app.sh"]
 
 CMD ["npm", "start"]
 
