@@ -1,6 +1,8 @@
 #!/bin/bash 
-  
-API_BASE_URL=${API_URI_SCHEME:-http}://${API_HOST:-localhost}:${API_PORT:-8080}
+
+if [  -z "${API_BASE_URL}" ]; then
+  API_BASE_URL=${API_URI_SCHEME:-http}://${API_HOST:-localhost}:${API_PORT:-8080}
+fi
 
 echo API_BASE_URL:$API_BASE_URL
 cat <<EOF > $PROJECT_HOME/src/app/baseUrl.ts
